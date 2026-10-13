@@ -31,7 +31,9 @@ El enlace oficial y el mensaje inicial se centralizan en `lib/whatsapp.ts`. Los 
 2. **Logo:** sustituir el wordmark tipográfico temporal por versión aprobada del logo.
 3. **Fotografías:** agregar fotos reales del local y productos en una siguiente versión, sin perder las ilustraciones decorativas.
 4. **Contenido:** validar los servicios anunciados, la historia del traslado y el tono de los textos con la librería.
-5. **SEO:** agregar dominio/canonical, imagen OG y verificar la ficha de Google Business Profile.
+5. **Dominio:** definir `NEXT_PUBLIC_SITE_URL` en el despliegue de producción con el origen público, por ejemplo `https://www.ejemplo.com`. Debe ser un origen sin ruta, credenciales ni fragmento. Sin esta variable no se generan canonical, URL de Open Graph ni URLs absolutas en sitemap/robots; las direcciones locales se rechazan.
+6. **SEO pendiente:** definir el dominio real, crear una imagen Open Graph aprobada y verificar la ficha de Google Business Profile. No se configuró favicon ni imagen OG porque no hay recursos disponibles.
+7. **Datos del negocio:** confirmar horarios actuales antes de publicarlos. El sitio no incorpora horarios ni calificaciones no verificadas.
 
 ## Dirección de arte
 
