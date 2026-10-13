@@ -33,10 +33,11 @@ Desde la raíz del repositorio:
 
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
 
-Abrir `http://localhost:3000`. Si la configuración de red lo permite, también puede accederse desde otro dispositivo de la misma red utilizando la IP local del equipo y el puerto `3000`.
+`NEXT_PUBLIC_SITE_URL` puede dejarse vacío durante el desarrollo local. Abrir `http://localhost:3000`. Si la configuración de red lo permite, también puede accederse desde otro dispositivo de la misma red utilizando la IP local del equipo y el puerto `3000`.
 
 Para detener el servidor, presionar `Ctrl+C`.
 
@@ -108,13 +109,13 @@ En `app/layout.tsx` se definen metadatos generales, Open Graph, Twitter Cards y 
 
 La URL del sitio se obtiene mediante `getPublicSiteUrl()` de `lib/site-url.ts`, a partir de la variable de entorno `NEXT_PUBLIC_SITE_URL`.
 
-Ejemplo para producción (reemplazar por el dominio real):
+La plantilla `.env.example` documenta esta única variable de entorno. Para desarrollo local, se puede dejar vacía. Antes del despliegue público, configurar `NEXT_PUBLIC_SITE_URL` en `.env.local` o en el proveedor de hosting con el dominio real:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://www.ejemplo.com.ar
+NEXT_PUBLIC_SITE_URL=https://www.tudominio.com.ar
 ```
 
-En desarrollo se puede utilizar `http://localhost:3000` como base de los metadatos de imágenes. **Antes del despliegue público**, configurar el dominio real y verificar las URLs canónicas, Open Graph, `robots.txt` y `sitemap.xml`. Evitar publicar URLs de `localhost` en metadatos compartibles.
+Debe ser el origen público completo (`https://...`), sin rutas, credenciales ni barra final. Si no se configura, el sitio funciona, pero no genera URL canónica ni incluye una URL en `sitemap.xml`; en desarrollo, los metadatos de imágenes usan `http://localhost:3000`. No hace falta guardar secretos en el `.env` para esta aplicación. El número de WhatsApp y los datos públicos del comercio están definidos en el código.
 
 No subir archivos `.env` con información sensible al repositorio. Documentar valores de ejemplo en `.env.example` si se necesitan.
 
